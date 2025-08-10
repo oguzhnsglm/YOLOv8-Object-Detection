@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thermal Defense Detection System</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Title Bar -->
+    <div class="title-bar">
+        <div class="title-bar-left">
+            <div class="app-icon">
+                <i class="fas fa-crosshairs"></i>
+            </div>
+            <div class="app-title">
+                <span class="title-main">THERMAL DEFENSE</span>
+                <span class="title-sub">Detection System v1.0</span>
+            </div>
+        </div>
+        <div class="title-bar-center">
+            <div class="system-status">
+                <div class="status-indicator active" id="systemStatus">
+                    <div class="pulse"></div>
+                </div>
+                <span class="status-text">SYSTEM OPERATIONAL</span>
+            </div>
+        </div>
+        <div class="title-bar-right">
+            <button class="title-btn" id="minimizeBtn">
+                <i class="fas fa-minus"></i>
+            </button>
+            <button class="title-btn" id="maximizeBtn">
+                <i class="fas fa-square"></i>
+            </button>
+            <button class="title-btn close" id="closeBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-shield-alt"></i> CONTROL PANEL</h3>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item active" data-section="detection">
+                    <i class="fas fa-search"></i>
+                    <span>Detection</span>
+                </div>
+                <div class="nav-item" data-section="analysis">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analysis</span>
+                </div>
+                <div class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </div>
+                <div class="nav-item" data-section="logs">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Logs</span>
+                </div>
+            </div>
+
+            <div class="system-info">
+                <h4><i class="fas fa-server"></i> System Info</h4>
+                <div class="info-item">
+                    <span class="label">CPU:</span>
+                    <span class="value" id="cpuInfo">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Memory:</span>
+                    <span class="value" id="memoryInfo">Loading...</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Status:</span>
+                    <span class="value status-ready">READY</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Detection Section -->
+            <div class="content-section active" id="detection-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-crosshairs"></i> Thermal Object Detection</h2>
+                    <div class="header-controls">
+                        <button class="btn btn-primary" id="loadFileBtn">
+                            <i class="fas fa-upload"></i> Load Media
+                        </button>
+                        <button class="btn btn-success" id="startDetectionBtn" disabled>
+                            <i class="fas fa-play"></i> Start Detection
+                        </button>
+                        <button class="btn btn-danger" id="stopDetectionBtn" disabled>
+                            <i class="fas fa-stop"></i> Stop
+                        </button>
+                        <button class="btn btn-danger" id="analyzeThreatBtn" disabled>
+                            <i class="fas fa-stop"></i> Tehlike Tespiti Yap
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="detection-workspace">
+                    <!-- Media Display -->
+                    <div class="media-container">
+                        <div class="media-display" id="mediaDisplay">
+                            <div class="placeholder">
+                                <i class="fas fa-image"></i>
+                                <p>Load thermal image or video to begin detection</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Detection Controls -->
+                        <div class="detection-controls">
+                            <div class="control-group">
+                                <label>Confidence Threshold</label>
+                                <div class="slider-container">
+                                    <input type="range" id="confidenceSlider" min="0.1" max="1.0" step="0.05" value="0.25">
+                                    <span class="slider-value" id="confidenceValue">0.25</span>
+                                </div>
+                            </div>
+                            
+                            <div class="control-group">
+                                <label>Detection Classes</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="personCheck" checked>
+                                        <span class="checkmark"></span>
+                                        Person
+                                    </label>
+                                    <label class="checkbox-item">
+                                        <input type="checkbox" id="carCheck" checked>
+                                        <span class="checkmark"></span>
+                                        Vehicle
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Panel -->
+                    <div class="results-panel">
+                        <div class="panel-header">
+                            <h3><i class="fas fa-bullseye"></i> Detection Results</h3>
+                            <div class="detection-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Objects:</span>
+                                    <span class="stat-value" id="objectCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Persons:</span>
+                                    <span class="stat-value" id="personCount">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Vehicles:</span>
+                                    <span class="stat-value" id="vehicleCount">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="results-content">
+                            <div class="detection-list" id="detectionList">
+                                <!-- Detection items will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div class="content-section" id="analysis-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Threat Analysis</h2>
+                </div>
+                <div class="analysis-content">
+                    <div class="chart-container">
+                        <canvas id="detectionChart"></canvas>
+                    </div>
+                    <div class="threat-assessment">
+                        <h3>Threat Level Assessment</h3>
+                        <div class="threat-meter">
+                            <div class="threat-level" id="threatLevel">
+                                <div class="threat-indicator"></div>
+                            </div>
+                            <div class="threat-labels">
+                                <span class="low">LOW</span>
+                                <span class="medium">MEDIUM</span>
+                                <span class="high">HIGH</span>
+                                <span class="critical">CRITICAL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="content-section" id="settings-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-cog"></i> System Configuration</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-group">
+                        <h3>Detection Parameters</h3>
+                        <div class="setting-item">
+                            <label>Model Type</label>
+                            <select id="modelSelect">
+                                <option value="yolov8n">YOLOv8 Nano (Fast)</option>
+                                <option value="yolov8s">YOLOv8 Small</option>
+                                <option value="yolov8m" selected>YOLOv8 Medium</option>
+                                <option value="yolov8l">YOLOv8 Large</option>
+                                <option value="yolov8x">YOLOv8 Extra Large</option>
+                            </select>
+                        </div>
+                        <div class="setting-item">
+                            <label>Image Size</label>
+                            <select id="imageSizeSelect">
+                                <option value="320">320px</option>
+                                <option value="416">416px</option>
+                                <option value="640" selected>640px</option>
+                                <option value="832">832px</option>
+                                <option value="1280">1280px</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-group">
+                        <h3>Alert System</h3>
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" id="alertsEnabled" checked>
+                                <span class="slider round"></span>
+                            </label>
+                            <span>Enable Audio Alerts</span>
+                        </div>
+                        <div class="setting-item">
+                            <label class="switch">
+                                <input type="checkbox" id="autoSaveEnabled">
+                                <span class="slider round"></span>
+                            </label>
+                            <span>Auto-save Results</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Logs Section -->
+            <div class="content-section" id="logs-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-file-alt"></i> System Logs</h2>
+                    <button class="btn btn-secondary" id="clearLogsBtn">
+                        <i class="fas fa-trash"></i> Clear Logs
+                    </button>
+                </div>
+                <div class="logs-content">
+                    <div class="log-terminal" id="logTerminal">
+                        <!-- Logs will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Processing Thermal Data...</h3>
+            <p id="loadingText">Initializing detection system...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/detection.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>

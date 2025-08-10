@@ -1,0 +1,733 @@
+/* Animation Styles - Defense Theme Animations */
+
+/* Keyframe Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 5px currentColor;
+    }
+
+    50% {
+        box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+    }
+
+    100% {
+        box-shadow: 0 0 5px currentColor;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes zoomOut {
+    0% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+
+    50% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Thermal-specific animations */
+@keyframes thermalPulse {
+    0% {
+        opacity: 0.3;
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        opacity: 0.6;
+        filter: hue-rotate(90deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        filter: hue-rotate(180deg);
+    }
+
+    75% {
+        opacity: 0.6;
+        filter: hue-rotate(270deg);
+    }
+
+    100% {
+        opacity: 0.3;
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes radarSweep {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dataStream {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+@keyframes matrixRain {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+@keyframes detectPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px var(--accent-orange);
+        border-width: 2px;
+    }
+
+    50% {
+        box-shadow: 0 0 25px var(--accent-orange), 0 0 35px var(--accent-orange);
+        border-width: 3px;
+    }
+}
+
+@keyframes threatAlert {
+
+    0%,
+    100% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: rgba(255, 51, 51, 0.2);
+    }
+}
+
+@keyframes systemBoot {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        filter: brightness(0);
+    }
+
+    25% {
+        opacity: 0.3;
+        filter: brightness(0.3);
+    }
+
+    50% {
+        opacity: 0.6;
+        filter: brightness(0.6);
+    }
+
+    75% {
+        opacity: 0.9;
+        filter: brightness(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+/* Animation Classes */
+.animate-pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.animate-slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.animate-slide-in-up {
+    animation: slideInUp 0.5s ease-out;
+}
+
+.animate-slide-in-down {
+    animation: slideInDown 0.5s ease-out;
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.animate-fade-out {
+    animation: fadeOut 0.5s ease-out;
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+.animate-bounce {
+    animation: bounce 1s infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+.animate-zoom-in {
+    animation: zoomIn 0.5s ease-out;
+}
+
+.animate-zoom-out {
+    animation: zoomOut 0.5s ease-in;
+}
+
+.animate-thermal-pulse {
+    animation: thermalPulse 3s ease-in-out infinite;
+}
+
+.animate-scan-line {
+    animation: scanLine 2s linear infinite;
+}
+
+.animate-radar-sweep {
+    animation: radarSweep 4s linear infinite;
+}
+
+.animate-data-stream {
+    animation: dataStream 2s linear infinite;
+}
+
+.animate-matrix-rain {
+    animation: matrixRain 3s linear infinite;
+}
+
+.animate-detect-pulse {
+    animation: detectPulse 1.5s ease-in-out infinite;
+}
+
+.animate-threat-alert {
+    animation: threatAlert 1s ease-in-out infinite;
+}
+
+.animate-system-boot {
+    animation: systemBoot 2s ease-out;
+}
+
+/* Hover Animations */
+.hover-glow:hover {
+    animation: glow 0.5s ease-in-out;
+}
+
+.hover-pulse:hover {
+    animation: pulse 0.5s ease-in-out;
+}
+
+.hover-bounce:hover {
+    animation: bounce 0.5s ease-in-out;
+}
+
+.hover-shake:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Transition Classes */
+.transition-all {
+    transition: all 0.3s ease;
+}
+
+.transition-fast {
+    transition: all 0.15s ease;
+}
+
+.transition-slow {
+    transition: all 0.5s ease;
+}
+
+.transition-colors {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.transition-transform {
+    transition: transform 0.3s ease;
+}
+
+.transition-opacity {
+    transition: opacity 0.3s ease;
+}
+
+/* Loading Animations */
+.loading-spinner {
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--accent-green);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+.loading-dots::after {
+    content: '';
+    animation: loadingDots 1.5s steps(4, end) infinite;
+}
+
+@keyframes loadingDots {
+
+    0%,
+    20% {
+        content: '';
+    }
+
+    40% {
+        content: '.';
+    }
+
+    60% {
+        content: '..';
+    }
+
+    80%,
+    100% {
+        content: '...';
+    }
+}
+
+/* Stagger Animations */
+.stagger-children>* {
+    animation-delay: calc(var(--stagger-delay, 0.1s) * var(--index, 0));
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+    will-change: transform;
+}
+
+.will-change-opacity {
+    will-change: opacity;
+}
+
+.will-change-auto {
+    will-change: auto;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .animate-pulse,
+    .animate-glow,
+    .animate-thermal-pulse,
+    .animate-scan-line,
+    .animate-radar-sweep,
+    .animate-data-stream,
+    .animate-matrix-rain,
+    .animate-detect-pulse,
+    .animate-threat-alert {
+        animation: none !important;
+    }
+}
+
+/* 
+Scanning line animation for detections */
+@keyframes scanVertical {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+}
+
+/* Enhanced pulse green for results */
+@keyframes pulseGreen {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        border-color: var(--accent-green);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 255, 65, 0.8);
+        border-color: #00bfff;
+    }
+}
+
+/* Results panel slide animation with bounce */
+@keyframes slideInRightBounce {
+    0% {
+        transform: translateX(120%);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateX(-10%);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateX(5%);
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Thermal alert flash */
+@keyframes thermalAlert {
+
+    0%,
+    100% {
+        background: rgba(255, 107, 53, 0.1);
+        border-color: var(--accent-orange);
+    }
+
+    25% {
+        background: rgba(0, 255, 65, 0.2);
+        border-color: var(--accent-green);
+    }
+
+    50% {
+        background: rgba(0, 191, 255, 0.2);
+        border-color: #00bfff;
+    }
+
+    75% {
+        background: rgba(255, 51, 51, 0.2);
+        border-color: var(--accent-red);
+    }
+}
+
+/* Success indicator bounce */
+@keyframes successBounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Thermal signature detected animation */
+@keyframes thermalSignature {
+    0% {
+        transform: scale(1);
+        filter: hue-rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.05);
+        filter: hue-rotate(90deg);
+    }
+
+    50% {
+        transform: scale(1.1);
+        filter: hue-rotate(180deg);
+    }
+
+    75% {
+        transform: scale(1.05);
+        filter: hue-rotate(270deg);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Button hover glow */
+@keyframes buttonGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(0, 255, 65, 0.8), 0 0 35px rgba(0, 191, 255, 0.4);
+    }
+}
+
+/* Additional animation classes */
+.animate-pulseGreen {
+    animation: pulseGreen 2s infinite;
+}
+
+.animate-slideInRightBounce {
+    animation: slideInRightBounce 0.8s ease-out;
+}
+
+.animate-thermalAlert {
+    animation: thermalAlert 1s ease-in-out 3;
+}
+
+.animate-successBounce {
+    animation: successBounce 1s ease-in-out;
+}
+
+.animate-thermalSignature {
+    animation: thermalSignature 3s ease-in-out;
+}
+
+.animate-buttonGlow {
+    animation: buttonGlow 2s infinite;
+}
+
+/* Background shift animation for gradient indicators */
+@keyframes backgroundShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
